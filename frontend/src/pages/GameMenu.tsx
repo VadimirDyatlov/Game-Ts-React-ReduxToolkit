@@ -13,7 +13,7 @@ function GameMenu() {
   }, []);
   return (
     <>
-      { status === 'loading' ? <Loading />
+      {(status === 'loading' || status === null)  ? <Loading />
         : (
           <nav className="nes-container is-rounded is-dark">
             <menu className="game-menu">
