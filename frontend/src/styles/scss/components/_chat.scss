@@ -1,0 +1,25 @@
+.chat-box {
+	@extend %block-centering;
+	@extend %anim-show;
+	h1 {
+		@extend %title-h1;
+	}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 900px;
+  height: 490px;
+  gap: 20px;
+  padding-top: 50px!important;
+	form {
+		display: flex;
+	}
+	ul {
+    list-style-type: none;
+		overflow: auto;
+    li {
+      word-break: break-all;
+    }
+	}
+}

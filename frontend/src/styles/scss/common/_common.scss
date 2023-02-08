@@ -1,0 +1,29 @@
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	* {
+		box-sizing: border-box;
+	}
+	overflow: hidden;
+	background-image: url('../../../public/img/backMenu.gif');
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: 'Press Start 2P', sans-serif;
+}
+
+.blue {
+	color: $colorBlue;
+}
+
+.yellow {
+	color: $colorYellow;
+}
+
+.is-dark {
+	@extend %is-dark;
+}
+

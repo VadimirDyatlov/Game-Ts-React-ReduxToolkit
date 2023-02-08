@@ -1,0 +1,20 @@
+.auth-box {
+  @extend %block-centering;
+	@extend %auth-box;
+  @extend %anim-show;
+	h1 {
+		@extend %title-h1;
+	}
+	form {
+		@extend %auth-form;
+		div {
+			margin-bottom: 10px;
+		}
+		button {
+			margin-bottom: 40px !important;
+		}
+		.error-message {
+			@extend %error-message;
+		}
+	}
+}
