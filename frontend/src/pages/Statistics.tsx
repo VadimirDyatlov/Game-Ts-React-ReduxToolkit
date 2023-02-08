@@ -12,7 +12,7 @@ import Loading from '../components/reused/Loading';
 
 function Statistics() {
   const { user, status } = useAppSelector((state) => state.auth);
-  const { playerStats } = useAppSelector((state) => state.statistics);
+  const { playerStats, status: statusStats } = useAppSelector((state) => state.statistics);
   const [key, setKey] = useState('gamesPlayed');
   const [countIndex, setcountIndex] = useState(0);
   const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ function Statistics() {
 
   return (
     <>
-      {status === 'loading' || status === null ? <Loading />
+      {status === 'loading' || statusStats === 'loading' || status === null ? <Loading />
         : (
           <>
             {user.name
