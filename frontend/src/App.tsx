@@ -7,7 +7,7 @@ import {
 import usuAppDispatch from './hooks/useAppDispatch';
 import useAppSelector from './hooks/useAppSelector';
 import { getCheckSession } from './store/reducers/authReducer';
-import './styles/css/index.css';
+// import './styles/css/index.css';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import GameMenu from './pages/GameMenu';
