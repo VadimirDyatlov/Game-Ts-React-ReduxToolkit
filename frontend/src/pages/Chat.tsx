@@ -12,7 +12,7 @@ import { setEventMessage } from '../models/types/formEventFuncs';
 
 function Chat() {
   const dispatch = useAppDispatch();
-  const [socket] = useState(io('https://voldo-game.onrender.com'));
+  const [socket] = useState(io('https://js-game-react.onrender.com/'));
   const ref = useRef<HTMLFormElement>(null);
   const { user, status } = useAppSelector((state) => state.auth);
   const { messageHistory } = useAppSelector((state) => state.chat);
