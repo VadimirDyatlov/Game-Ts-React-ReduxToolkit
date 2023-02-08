@@ -51,7 +51,7 @@ function Chat() {
   return (
     <>
       {' '}
-      {!messageHistory.length || status === 'loading' || status === null ? <Loading />
+      {(!messageHistory.length || status === 'loading' || status === null) ? <Loading />
         : (
           <>
             {user.name ? (

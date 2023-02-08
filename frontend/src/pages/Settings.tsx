@@ -38,7 +38,7 @@ function Settings() {
 
   return (
     <>
-      { status === 'loading' || status === null ? <Loading />
+      {(status === 'loading' || status === null) ? <Loading />
         : (
           <>
             {user.name

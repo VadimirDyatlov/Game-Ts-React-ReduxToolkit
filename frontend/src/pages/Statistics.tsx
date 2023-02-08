@@ -30,7 +30,7 @@ function Statistics() {
 
   return (
     <>
-      {status === 'loading' || statusStats === 'loading' || status === null ? <Loading />
+      {(status === 'loading' || statusStats === 'loading' || status === null) ? <Loading />
         : (
           <>
             {user.name
