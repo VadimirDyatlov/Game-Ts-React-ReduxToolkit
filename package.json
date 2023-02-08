@@ -4,7 +4,7 @@
   "description": "React game",
   "main": "./backend/app.js",
   "scripts": {
-    "postinstall": "cd backend && npm i && npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all && cd ../frontend && npm i && npm run build",
+    "postinstall": "cd backend && npm i && npx sequelize db:migrate",
     "start": "cd backend && npm start"
   },
   "author": "Voldo",
