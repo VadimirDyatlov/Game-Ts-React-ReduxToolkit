@@ -2,7 +2,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { IInitialState, IPlayerStats } from '../../models/types/ReducerTypes/settings';
-import urlStore from '../ApiUrlStore';
+import { urlStore } from '../ApiUrlStore';
 
 export const getPlayerStats = createAsyncThunk<IPlayerStats, void, { rejectValue: string }>(
   'settings/getPlayerStats',
