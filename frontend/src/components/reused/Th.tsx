@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React, { } from 'react';
 import { IPropsTh } from '../../models/types/propsTypes';
 

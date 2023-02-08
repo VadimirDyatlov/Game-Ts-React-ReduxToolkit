@@ -1,16 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './reducers/authReducer';
+import chatReducer from './reducers/chatReducer';
+import gameReducer from './reducers/gameReducer';
 import settingsReducer from './reducers/settingsReducer';
 import statisticsReducer from './reducers/statisticsReducer';
+import upgradeReducer from './reducers/upgradeReducer';
 
 const store = configureStore({
   reducer: {
-    // game: gameReducer,
+    game: gameReducer,
     auth: authReducer,
-    // upgrade: upgradeReducer,
+    upgrade: upgradeReducer,
     settings: settingsReducer,
     statistics: statisticsReducer,
-    // chat: chatReducer,
+    chat: chatReducer,
   },
 });
 

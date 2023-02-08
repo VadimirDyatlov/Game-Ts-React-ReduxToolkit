@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React, { } from 'react';
 import { IPropsPlayerStats } from '../../models/types/propsTypes';
 import Th from '../reused/Th';

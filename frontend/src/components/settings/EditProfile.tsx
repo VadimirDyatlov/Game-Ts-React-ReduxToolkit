@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React, { } from 'react';
 import { IEditProfile } from '../../models/types/propsTypes';
 

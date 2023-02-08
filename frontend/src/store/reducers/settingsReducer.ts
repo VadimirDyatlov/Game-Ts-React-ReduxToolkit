@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { IInitialState, IPlayerStats } from '../../models/types/ReducerTypes/settings';
