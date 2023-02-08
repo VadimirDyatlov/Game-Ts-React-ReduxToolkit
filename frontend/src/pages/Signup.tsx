@@ -1,8 +1,7 @@
-/* eslint-disable import/no-unresolved */
 import React, { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import BackButton from '../components/Reused/r';
-// import H1 from '../components/Reused/H1';
+import BackButton from '../components/reused/BackButton';
+import H1 from '../components/reused/H1';
 import useAppDispatch from '../hooks/useAppDispatch';
 import useAppSelector from '../hooks/useAppSelector';
 import { getUserSingUp, setError } from '../store/reducers/authReducer';
@@ -41,7 +40,7 @@ function Signup() {
   return (
     <>
       <div className="auth-box nes-container is-rounded is-dark">
-        {/* <H1 rightText="LET&apos;S" leftText="PLAY!" /> */}
+        <H1 rightText="LET&apos;S" leftText="PLAY!" />
         <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
           <div className="nes-field">
             <input
@@ -77,7 +76,7 @@ function Signup() {
           { error !== false && <div className="error-message">{error}</div> }
         </form>
       </div>
-      123
+      <BackButton />
     </>
   );
 }

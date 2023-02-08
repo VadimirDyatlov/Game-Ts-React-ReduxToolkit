@@ -13,8 +13,8 @@ import Signin from './pages/Signin';
 import GameMenu from './pages/GameMenu';
 // import Game from './pages/Game';
 // import Upgrade from './pages/Upgrade';
-// import Statistics from './pages/Statistics';
-// import Settings from './pages/Settings';
+import Statistics from './pages/Statistics';
+import Settings from './pages/Settings';
 // import Chat from './pages/Chat';
 
 function App() {
@@ -32,11 +32,11 @@ function App() {
             <Route index element={<GameMenu />} />
             <Route path="signup" element={<Signup />} />
             <Route path="signin" element={<Signin />} />
-            {/* <Route path="game" element={<Game />} />
-            <Route path="upgrade" element={<Upgrade />} />
+            {/* <Route path="game" element={<Game />} /> */}
+            {/* <Route path="upgrade" element={<Upgrade />} /> */}
             <Route path="statistics" element={<Statistics />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="chat" element={<Chat />} /> */}
+            {/* <Route path="chat" element={<Chat />} /> */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (
