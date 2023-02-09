@@ -1,0 +1,29 @@
+nav {
+	@extend %block-centering;
+	@extend %anim-show;
+	menu {
+		list-style-type: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 50px !important;
+		gap: 20px;
+		width: 700px;
+		li {
+			line-height: 2.5em;
+			font-size: 1.5em;
+			text-shadow: rgb(110, 110, 110) 0px 1px 0px, rgb(110, 110, 110) 0px 2px 0px,
+				rgba(0, 0, 0, 0.5) 0px 3px 1px, rgba(0, 0, 0, 0.5) 0px 4px 3px;
+			a {
+				color: rgb(216, 216, 216);
+			}
+			a:hover {
+				color: $textHover;
+				cursor: pointer;
+				text-shadow: rgb(172, 136, 15) 0px 1px 0px, rgb(108, 86, 10) 0px 2px 0px,
+					rgba(0, 0, 0, 0.5) 0px 3px 1px, rgba(0, 0, 0, 0.5) 0px 4px 2px;
+				transition: all linear 0.5s;
+			}
+		}
+	}
+}

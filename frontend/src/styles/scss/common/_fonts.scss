@@ -1,0 +1,10 @@
+// %fonts {
+//   font-family: 'Press Start 2P', sans-serif;
+// }
+@font-face {
+  font-family: 'Press Start 2P', sans-serif;
+  // src: url("https://fonts.googleapis.com/css?family=Press+Start+2P") format("ttf");
+  src: local("Press_Start_2P/PressStart2P-Regular.ttf") format("ttf");
+  font-style: normal;
+}
+// <!-- <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" /> -->
