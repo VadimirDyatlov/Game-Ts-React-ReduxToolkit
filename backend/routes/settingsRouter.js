@@ -54,7 +54,6 @@ settingsRouter.route('/getplayerstats')
           attributes: ['id'],
         },
       });
-      console.log(playerStats);
       res.status(200).json({ playerStats: playerStats[0] });
     } catch (error) {
       console.log(error.message);
