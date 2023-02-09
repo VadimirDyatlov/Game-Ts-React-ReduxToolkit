@@ -7,7 +7,7 @@ function calcCollisionsEnemie(state: IInitialState) {
   state.enemies.forEach((enemy) => {
     if (objectsCollision(state.hero, enemy)) {
       if (state.gameLoop % enemy.coolDown === 0) {
-        state.hero.hp = state.hero.hp > 0 ? Number(state.hero.hp) - Number(enemy.damage) : 0;
+        state.hero.hp =  Number(state.hero.hp) - Number(enemy.damage) < 0 ? 0 : Number(state.hero.hp) - Number(enemy.damage)
         if (enemy.type === 1) {
           enemy.skin = '/animations/enemie0attack.gif'; // меняет скин врага при ударе первого типа
         }

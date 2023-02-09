@@ -96,7 +96,7 @@ export function calcUpgrade<HTMLDivElement>(
     }
   }
   if (defGold !== activeGold && direction === 'down') {
-    if (activeGold) {
+    if (typeof activeGold === 'number') {
       lastGold = activeGold + Math.round(nextPrice / PriceCoef);
     }
   }
