@@ -16,7 +16,6 @@ function Settings() {
   const { playerStats } = useAppSelector((state) => state.settings);
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLFormElement>(null);
-  console.log(playerStats);
 
   useEffect(() => {
     dispatch(getPlayerStats());

@@ -2,7 +2,7 @@ export interface IPlayerStats {
   gamesPlayed?: string,
   killings?: string,
   gold?: string,
-  time?: string,
+  time?: number,
 }
 
 export interface IInitialState {

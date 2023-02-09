@@ -4,7 +4,10 @@ import {
 } from './types/ReducerTypes/game';
 import { IConstObj, IUpgradeHeroValue } from './types/ReducerTypes/upgrade';
 
-export function formatTime(milesSeconds: number): string {
+export function formatTime(milesSeconds: number | undefined): string {
+  if (!milesSeconds) {
+    return '0'
+  }
   const seconds: string = ((milesSeconds / 1000) % 60).toFixed(0);
   const minutes: string = Math.floor(((milesSeconds / 1000 / 60) % 60)).toString();
   const hours: string = Math.floor((milesSeconds / (1000 * 60 * 60))).toString();

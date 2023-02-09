@@ -2,6 +2,7 @@ import React, { } from 'react';
 import { IPropsPlayerStats } from '../../models/types/propsTypes';
 import Th from '../reused/Th';
 import Td from '../reused/Td';
+import { formatTime } from '../../models/functions';
 
 function PlayerStats({ playerStats }: IPropsPlayerStats) {
   return (
@@ -22,7 +23,7 @@ function PlayerStats({ playerStats }: IPropsPlayerStats) {
           </tr>
           <tr>
             <Td content={playerStats.gold} />
-            <Td content={playerStats.time} />
+            <Td content={formatTime(playerStats.time)} />
           </tr>
         </tbody>
       </table>

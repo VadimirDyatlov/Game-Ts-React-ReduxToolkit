@@ -28,7 +28,7 @@ const initialState: IInitialState = {
     gamesPlayed: '0',
     killings: '0',
     gold: '0',
-    time: '0',
+    time: 0,
   },
 };
 
