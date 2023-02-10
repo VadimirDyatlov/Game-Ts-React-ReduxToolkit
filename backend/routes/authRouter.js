@@ -39,8 +39,14 @@ authRouter.route('/signup')
         name, password, password2,
       } = req.body;
 
-      if (password !== password2 || password.length < 8) {
-        const message = 'Пароль не совпадает или его длина не верная!';
+       if (password !== password2) {
+        const message = 'Пароль не совпадает!';
+        res.status(401).json({ message });
+        return;
+      }
+
+      if (password.length < 8) {
+        const message = 'Длина пароля не верная, минимум 8 символов!';
         res.status(401).json({ message });
         return;
       }
