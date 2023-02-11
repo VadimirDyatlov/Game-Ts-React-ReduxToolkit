@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { v4 as uuidv4 } from 'uuid';
 import { objectsCollision } from '../../../models/functions';
 import { IInitialState } from '../../../models/types/ReducerTypes/game';

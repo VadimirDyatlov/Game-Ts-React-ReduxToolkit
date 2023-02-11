@@ -27,6 +27,8 @@ import {
 } from '../store/reducers/gameReducer';
 
 function Game() {
+  // console.log('render');
+  
   const dispatch = useAppDispatch();
   const gameRef = useRef<HTMLDivElement>(null);
   const { user } = useAppSelector((state) => state.auth);
@@ -46,34 +48,34 @@ function Game() {
   const [arrowLeft, setArrowLeft] = useState(false);
   const [arrowUp, setArrowUp] = useState(false);
   const [arrowDown, setArrowDown] = useState(false);
-  const [shot, setShot] = useState(false);
+  // const [shot, setShot] = useState(false);
   const [timeBullet, seTimeBullet] = useState(Date.now());
   const [timeEnemy, setTimeEnemy] = useState(Date.now());
   const [shoot, setShoot] = useState(false);
-  const [cordMouse, setCordMouse] = useState<number[]>([]);
-  const [cordMouseOver, setCordMouseOver] = useState<number[]>([]);
+  const [mouseCord, setMouseCord] = useState<number[]>([]);
+  // const [cordMouseOver, setCordMouseOver] = useState<number[]>([]);
   const [timeoutFlag, setTimeoutFlag] = useState(false);
   const [gameStartTime, setGameStartTime] = useState(0);
+  const [mFlag, setmFlag] = useState(false);
 
   const handleKeyDown = (event: KeyboardEvent): void => {
-    if (event.key === 'd') setArrowRight(true);
-    if (event.key === 'a') setArrowLeft(true);
-    if (event.key === 'w') setArrowUp(true);
-    if (event.key === 's') setArrowDown(true);
-    if (event.key === ' ') setShot(true);
+    if (event.key === 'd' || event.key === 'в') setArrowRight(true);
+    if (event.key === 'a' || event.key === 'ф') setArrowLeft(true);
+    if (event.key === 'w' || event.key === 'ц') setArrowUp(true);
+    if (event.key === 's' || event.key === 'ы') setArrowDown(true);
+    // if (event.key === ' ') setShot(true);
   };
 
   const handleKeyUp = (event: KeyboardEvent): void => {
-    if (event.key === 'd') setArrowRight(false);
-    if (event.key === 'a') setArrowLeft(false);
-    if (event.key === 'w') setArrowUp(false);
-    if (event.key === 's') setArrowDown(false);
-    if (event.key === ' ') setShot(false);
+    if (event.key === 'd' || event.key === 'в') setArrowRight(false);
+    if (event.key === 'a' || event.key === 'ф') setArrowLeft(false);
+    if (event.key === 'w' || event.key === 'ц') setArrowUp(false);
+    if (event.key === 's' || event.key === 'ы') setArrowDown(false);
+    // if (event.key === ' ') setShot(false);
   };
 
   const handleMouseDown = (event: MouseEvent): void => {
     setShoot(true);
-    setCordMouse([event.clientX - 36, event.clientY - 35]);
   };
 
   const handleMouseUp = () => {
@@ -81,13 +83,17 @@ function Game() {
   };
 
   const handleMouseMove = (event: MouseEvent): void => {
-    setCordMouseOver([event.clientX - 36, event.clientX - 35]);
+    if (timeoutFlag && mFlag) {
+      setmFlag(false);
+      setMouseCord([event.clientX - 56, event.clientY - 35]);
+    }
+    
   };
 
   useEffect(() => {
     dispatch(getHero());
     setGameStartTime(new Date().getTime());
-    gameRef.current?.focus();
+    // gameRef.current?.focus();
     dispatch(
       getDisplay({
         width: gameRef.current?.offsetWidth,
@@ -99,11 +105,11 @@ function Game() {
   // главный
   useEffect(() => {
     const pressedButtons = [];
-    const mouseCord = [];
+    // const mouseCord = [];
 
     if (shoot) {
       if (Date.now() - timeBullet > 180) {
-        mouseCord.push(cordMouse[0], cordMouse[1]);
+        pressedButtons.push('shot');
         seTimeBullet(Date.now);
       }
     }
@@ -116,12 +122,12 @@ function Game() {
       pressedButtons.push('stop');
     }
     // логика скорострельности
-    if (shot && playGame === 'play') {
-      if (Date.now() - timeBullet > gamePlay.coolDownBullet) {
-        pressedButtons.push(' ');
-        seTimeBullet(Date.now);
-      }
-    }
+    // if (shot && playGame === 'play') {
+    //   if (Date.now() - timeBullet > gamePlay.coolDownBullet) {
+    //     pressedButtons.push(' ');
+    //     seTimeBullet(Date.now);
+    //   }
+    // }
     // логика появления врагов
     if (Date.now() - timeEnemy > gamePlay.coolDownEnemies && playGame === 'play') {
       pressedButtons.push('enemy');
@@ -163,7 +169,9 @@ function Game() {
       }
     }
     // главный диспатчэ
-    dispatch(updateFrame({ hero: pressedButtons, mouseCord, cordMouseOver }));
+    // console.log(mouseCord);
+    
+    dispatch(updateFrame({ hero: pressedButtons, mouseCord }));
 
     // логика для смены локации при прохождении первой волны
     if (playGame === 'waiting' && gamePlay.countWaves === 2) {
@@ -194,6 +202,7 @@ function Game() {
       setTimeout(() => {
         setTimeoutFlag((prev) => !prev);
       }, 50);
+      setmFlag(true);
     }
   }, [timeoutFlag]);
 

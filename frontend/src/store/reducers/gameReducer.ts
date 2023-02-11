@@ -60,7 +60,7 @@ const initialState: IInitialState = {
     bossCount: 0,
     countWaves: 1,
     coolDownEnemies: 1500,
-    coolDownBullet: 30,
+    coolDownBullet: 7,
     droppedGoldType1: 5,
     droppedGoldType2: 10,
     droppedGoldType3: 15,
