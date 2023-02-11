@@ -118,7 +118,7 @@ function calcEnemies(state: IInitialState) {
       const cord = randomCord(state);
       // console.log('ближе 50 вправо');
       if (enemy.type === 1) {
-        // el.skin = '/animations/enemie0attack.gif';
+        // el.skin ='/animations/enemie0attack.gif';
         enemy.move = 1;
       }
       if (enemy.type === 2) {
