@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { IInitialState } from '../../../models/types/ReducerTypes/game';
 
 function calcEnemies(state: IInitialState) {
@@ -23,7 +22,7 @@ function calcEnemies(state: IInitialState) {
       return arrCord[cord];
     }
     if (state.hero.x < enemy.x) {
-      if (enemy.x - state.hero.x < 130) {
+      if (enemy.x - state.hero.x < 50) {
         const cord = randomCord(state);
         // console.log('ближе 50 влево');
         if (enemy.type === 1) {
@@ -115,7 +114,7 @@ function calcEnemies(state: IInitialState) {
         }
         // console.log('дальше 50 влево');
       }
-    } else if (state.hero.x - enemy.x < 130) {
+    } else if (state.hero.x - enemy.x < 50) {
       const cord = randomCord(state);
       // console.log('ближе 50 вправо');
       if (enemy.type === 1) {
@@ -145,21 +144,21 @@ function calcEnemies(state: IInitialState) {
       }
       if (state.calcEnemiesFlag) {
         if (state.calcEnemiesFlag1) {
-          enemy.y += 0.95;
+          enemy.y -= 0.95;
           if (randomFlag()) {
             state.calcEnemiesFlag1 = !state.calcEnemiesFlag1;
           }
         } else {
-          enemy.y -= 0.95;
+          enemy.y += 0.95;
           if (randomFlag()) {
             state.calcEnemiesFlag1 = !state.calcEnemiesFlag1;
           }
         }
       } else {
-        if (state.hero.y > enemy.y) {
-          enemy.y += 0.35;
-        }
         if (state.hero.y < enemy.y) {
+          enemy.y -= 0.35;
+        }
+        if (state.hero.y > enemy.y) {
           enemy.y -= 0.35;
         }
       }

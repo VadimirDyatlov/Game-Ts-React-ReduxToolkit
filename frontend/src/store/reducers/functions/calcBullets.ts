@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { IInitialState } from '../../../models/types/ReducerTypes/game';
 
 function calcBullets(state: IInitialState) {

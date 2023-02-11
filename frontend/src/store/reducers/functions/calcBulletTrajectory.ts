@@ -1,5 +1,3 @@
-/* eslint-disable no-mixed-operators */
-/* eslint-disable import/no-unresolved */
 import { IInitialState } from '../../../models/types/ReducerTypes/game';
 
 function calcBulletTrajectory(state: IInitialState, cord: number[]) {

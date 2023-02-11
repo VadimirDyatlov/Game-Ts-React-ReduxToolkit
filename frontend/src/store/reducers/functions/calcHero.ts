@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { v4 as uuidv4 } from 'uuid';
 import { IInitialState } from '../../../models/types/ReducerTypes/game';
 import calcBulletTrajectory from './calcBulletTrajectory';
@@ -7,7 +6,7 @@ interface IAction {
     payload: {
       hero: string[]
       mouseCord: number[]
-      cordMouseOver: number[]
+      // cordMouseOver: number[]
     }
 }
 
@@ -19,8 +18,8 @@ function calcHero(state: IInitialState, action: IAction) {
   if (action.payload.hero.includes('d')) {
     if (state.hero.x < (state.display.width - state.hero.w)) {
       state.hero.x += state.hero.speed; // идет вправо
-      if (action.payload.cordMouseOver) {
-        if (action.payload.cordMouseOver[0] > state.hero.x) {
+      if (action.payload.mouseCord) {
+        if (action.payload.mouseCord[0] > state.hero.x) {
           state.hero.skin = '/animations/hero1move.gif'; // меняет скин при ходьбе
           state.hero.move = 1; // отзеркаливает скин
         } else {
@@ -36,8 +35,8 @@ function calcHero(state: IInitialState, action: IAction) {
   if (action.payload.hero.includes('a')) {
     if (state.hero.x > 0) {
       state.hero.x -= state.hero.speed; // идет влево
-      if (action.payload.cordMouseOver) {
-        if (action.payload.cordMouseOver[0] < state.hero.x) {
+      if (action.payload.mouseCord) {
+        if (action.payload.mouseCord[0] < state.hero.x) {
           state.hero.skin = '/animations/hero1move.gif'; // меняет скин при ходьбе
           state.hero.move = -1; // отзеркаливает скин
         } else {
@@ -54,19 +53,19 @@ function calcHero(state: IInitialState, action: IAction) {
     if (state.hero.y > 300) {
       state.hero.y -= state.hero.speed; // идет вверх
       state.hero.skin = '/animations/hero1move.gif'; // меняет скин при ходьбе
-      state.hero.move = 1; // отзеркаливает скин
+      // state.hero.move = 1; // отзеркаливает скин
     }
   }
   if (action.payload.hero.includes('s')) {
     if (state.hero.y < (state.display.height - state.hero.h)) {
       state.hero.y += state.hero.speed; // идет вниз
       state.hero.skin = '/animations/hero1move.gif'; // меняет скин при ходьбе
-      state.hero.move = -1; // отзеркаливает скин
+      // state.hero.move = -1; // отзеркаливает скин
     }
   }
   if (action.payload.hero.includes('stop')) {
-    if (action.payload.cordMouseOver) {
-      if (action.payload.cordMouseOver[0] > state.hero.x) {
+    if (action.payload.mouseCord) {
+      if (action.payload.mouseCord[0] > state.hero.x) {
         state.hero.skin = '/animations/hero2.gif';
         state.hero.move = 1;
       } else {
@@ -75,8 +74,9 @@ function calcHero(state: IInitialState, action: IAction) {
       }
     }
   }
+// console.log(action.payload.mouseCord);
 
-  if (action.payload.mouseCord.length > 0) {
+  if (action.payload.hero.includes('shot')) {
     const [speedX, speedY, g] = calcBulletTrajectory(
       state,
       action.payload.mouseCord,
