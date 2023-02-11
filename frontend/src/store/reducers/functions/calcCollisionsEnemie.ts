@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable import/no-unresolved */
 import { objectsCollision } from '../../../models/functions';
 import { IInitialState } from '../../../models/types/ReducerTypes/game';
 
