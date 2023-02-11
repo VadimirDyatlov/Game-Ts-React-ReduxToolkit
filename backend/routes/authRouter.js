@@ -39,7 +39,8 @@ authRouter.route('/signup')
         name, password, password2,
       } = req.body;
 
-        if (password !== password2) {
+
+      if (password !== password2) {
         const message = 'Пароль не совпадает!';
         res.status(401).json({ message });
         return;
