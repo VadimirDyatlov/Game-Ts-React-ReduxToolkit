@@ -15,6 +15,7 @@ function GoldCoin({ coin }: IPropsCoin) {
       <img
         src={`${coin.skin}`}
         alt={`${coin.id}`}
+        draggable="false"
       />
     </div>
   );

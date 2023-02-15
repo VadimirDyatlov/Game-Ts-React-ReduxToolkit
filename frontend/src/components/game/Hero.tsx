@@ -16,6 +16,7 @@ function Hero() {
       <img
         src={`${hero.skin}`} // скин игрока
         alt={`${hero.move}`} // зеркалим скин
+        draggable="false"
       />
     </div>
   );

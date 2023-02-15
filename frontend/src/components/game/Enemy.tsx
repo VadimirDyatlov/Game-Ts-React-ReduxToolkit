@@ -15,6 +15,7 @@ function Enemy({ enemy }: IPropsEnemy) {
       <img
         src={`${enemy.skin}`} // скин врака
         alt=""
+        draggable="false"
       />
     </div>
   );
