@@ -48,7 +48,7 @@ function Game() {
   const [arrowLeft, setArrowLeft] = useState(false);
   const [arrowUp, setArrowUp] = useState(false);
   const [arrowDown, setArrowDown] = useState(false);
-  // const [shot, setShot] = useState(false);
+  const [shot, setShot] = useState(false);
   const [timeBullet, seTimeBullet] = useState(Date.now());
   const [timeEnemy, setTimeEnemy] = useState(Date.now());
   const [shoot, setShoot] = useState(false);
@@ -108,7 +108,7 @@ function Game() {
     // const mouseCord = [];
 
     if (shoot) {
-      if (Date.now() - timeBullet > 180) {
+      if (Date.now() - timeBullet > 180) { // 300 в ориг
         pressedButtons.push('shot');
         seTimeBullet(Date.now);
       }
@@ -202,7 +202,7 @@ function Game() {
       setTimeout(() => {
         setTimeoutFlag((prev) => !prev);
       }, 50);
-      setmFlag(true);
+      setmFlag(true);// ??
     }
   }, [timeoutFlag]);
 
