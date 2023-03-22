@@ -2,7 +2,7 @@ import { objectsCollision } from '../../../models/functions';
 import { IInitialState } from '../../../models/types/ReducerTypes/game';
 
 function calcCollisionsEnemie(state: IInitialState) {
-  state.enemies.forEach((enemy) => {
+  state.enemiesArray.forEach((enemy) => {
     if (objectsCollision(state.hero, enemy)) {
       if (state.gameLoop % enemy.coolDown === 0) {
         state.hero.hp =  Number(state.hero.hp) - Number(enemy.damage) < 0 ? 0 : Number(state.hero.hp) - Number(enemy.damage)

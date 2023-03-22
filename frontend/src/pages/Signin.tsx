@@ -48,11 +48,11 @@ function Signin() {
               className="nes-input"
               type="text"
               name="name"
-              placeholder="name"
+              placeholder="Name"
               required
             />
           </div>
-          <div className="input-section nes-field">
+          <div className="nes-field">
             <input
               className="nes-input"
               type="password"
@@ -61,8 +61,8 @@ function Signin() {
               required
             />
           </div>
-          <button type="submit" className="nes-btn" id="login-btn">
-            Войти
+          <button type="submit" className="nes-btn">
+            Sign In
           </button>
           { error !== false && <div className="error-message">{error}</div> }
         </form>

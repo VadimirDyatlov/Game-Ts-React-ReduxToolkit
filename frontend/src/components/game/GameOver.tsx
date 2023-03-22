@@ -19,15 +19,15 @@ function GameOver({ playGame }: IPropsGameOver) {
       <table className="nes-table is-bordered is-dark">
         <thead>
           <tr>
-            <Th content="Убито врагов" />
+            <Th content="Killings" />
             <Th content={`${gameStats.killings}`} />
           </tr>
           <tr>
-            <Th content="Золота добыто" />
+            <Th content="Gold" />
             <Th content={`${gameStats.gold}`} />
           </tr>
           <tr>
-            <Th content="Время игры" />
+            <Th content="Time" />
             <Th content={`${formatTime(gameStats.gameTime)}`} />
           </tr>
         </thead>

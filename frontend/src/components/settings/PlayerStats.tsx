@@ -19,7 +19,7 @@ function PlayerStats({ playerStats }: IPropsPlayerStats) {
           </tr>
           <tr>
             <Th content="Gold" />
-            <Th content="Time Game" />
+            <Th content="Game Time" />
           </tr>
           <tr>
             <Td content={playerStats.gold} />

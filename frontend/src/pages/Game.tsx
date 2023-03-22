@@ -12,6 +12,7 @@ import Enemy from '../components/game/Enemy';
 import GoldCoin from '../components/game/GoldCoin';
 import GameOver from '../components/game/GameOver';
 import Loading from '../components/reused/Loading';
+import Hand from '../components/game/Hand'
 // import Column from '../Column/Column';
 import {
   getHero,
@@ -25,6 +26,8 @@ import {
   updatePositionhero,
   deleteAllGolds,
 } from '../store/reducers/gameReducer';
+import Blood from '../components/game/Blood';
+import DeadBody from '../components/game/DeadBody';
 
 function Game() {
   // console.log('render');
@@ -34,11 +37,13 @@ function Game() {
   const { user } = useAppSelector((state) => state.auth);
   const {
     status,
-    enemies,
-    bullets,
+    enemiesArray,
+    bloodArray,
+    deadBodyArray,
+    bulletsArray,
     hero,
     backgroundPositionLeft,
-    golds,
+    goldsArray,
     gamePlay,
     gameStats,
   } = useAppSelector((state) => state.game);
@@ -48,8 +53,8 @@ function Game() {
   const [arrowLeft, setArrowLeft] = useState(false);
   const [arrowUp, setArrowUp] = useState(false);
   const [arrowDown, setArrowDown] = useState(false);
-  const [shot, setShot] = useState(false);
-  const [timeBullet, seTimeBullet] = useState(Date.now());
+  // const [shot, setShot] = useState(false);
+  // const [timeBullet, seTimeBullet] = useState(Date.now());
   const [timeEnemy, setTimeEnemy] = useState(Date.now());
   const [shoot, setShoot] = useState(false);
   const [mouseCord, setMouseCord] = useState<number[]>([]);
@@ -107,13 +112,7 @@ function Game() {
     const pressedButtons = [];
     // const mouseCord = [];
 
-    if (shoot) {
-      if (Date.now() - timeBullet > 180) { // 300 в ориг
-        pressedButtons.push('shot');
-        seTimeBullet(Date.now);
-      }
-    }
-
+    if (shoot && playGame === 'play') pressedButtons.push('shot');
     if (arrowRight && playGame === 'play') pressedButtons.push('d');
     if (arrowLeft && playGame === 'play') pressedButtons.push('a');
     if (arrowUp && playGame === 'play') pressedButtons.push('w');
@@ -163,7 +162,7 @@ function Game() {
       // логика выгрыша
       if (
         gameStats.killings
-        === gamePlay.waves2 + gamePlay.waves1 + gamePlay.waves3 + gamePlay.boss
+        === gamePlay.waves2 + gamePlay.waves1 + gamePlay.waves3 + gamePlay.boss && goldsArray.length === 0
       ) {
         setPlayGame('win');
       }
@@ -243,15 +242,13 @@ function Game() {
                   {playGame === 'play' && (
                   <>
                     <Hero />
+                    <Hand />
                     {/* <Column /> */}
-                    {bullets && bullets.map((bullet) => (
-                      <Bullet
-                        key={bullet.id}
-                        bullet={bullet}
-                      />
-                    ))}
-                    {enemies && enemies.map((enemy) => <Enemy key={enemy.id} enemy={enemy} />)}
-                    {golds && golds.map((coin) => <GoldCoin key={coin.id} coin={coin} />)}
+                    {bulletsArray && bulletsArray.map((bullet) => <Bullet key={bullet.id} bullet={bullet} />)}
+                    {enemiesArray && enemiesArray.map((enemy) => <Enemy key={enemy.id} enemy={enemy} />)}
+                    {bloodArray && bloodArray.map((blood) => <Blood key={blood.id} blood={blood} />)}
+                    {deadBodyArray && deadBodyArray.map((deadBody) => <DeadBody key={deadBody.id} deadBody={deadBody} />)}
+                    {goldsArray && goldsArray.map((coin) => <GoldCoin key={coin.id} coin={coin} />)}
                   </>
                   )}
                   {(playGame === 'game-over' || playGame === 'win') && <GameOver playGame={playGame} />}

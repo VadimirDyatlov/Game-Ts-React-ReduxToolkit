@@ -7,7 +7,7 @@ function EditProfile({
   return (
     <div className="edit-profile nes-container is-rounded is-dark">
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
-        <h3>Изменить имя и пароль</h3>
+        <h3>Edit name and pass</h3>
         <div className="nes-field">
           <input
             className="nes-input"
@@ -26,7 +26,7 @@ function EditProfile({
           />
         </div>
         <button type="submit" className="nes-btn">
-          Изменить
+          Edit
         </button>
       </form>
       { error !== false && <p className="error_message">{error}</p> }

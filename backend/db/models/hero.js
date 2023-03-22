@@ -44,6 +44,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    // rateOfFire: {
+    //   allowNull: false,
+    //   type: DataTypes.INTEGER,
+    // },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,

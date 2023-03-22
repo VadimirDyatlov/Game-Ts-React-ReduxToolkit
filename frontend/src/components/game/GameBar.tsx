@@ -27,7 +27,7 @@ function GameBar() {
         </div>
         <div
           className="progress-lvl"
-          style={{ width: `${findNum(getLvl(hero.lvl)[1], hero.lvl)}%` }}
+          style={{ width: `${findNum(getLvl(hero.lvl)[1], hero.lvl < 180 ? hero.lvl : hero.lvl - getLvl(hero.lvl)[2])}%` }}
         >
           <p>{`lvl ${getLvl(hero.lvl)[0]}`}</p>
         </div>

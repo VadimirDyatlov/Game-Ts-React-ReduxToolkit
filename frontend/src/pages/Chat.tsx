@@ -63,9 +63,9 @@ function Chat() {
                       name="text"
                       className="nes-input"
                       type="text"
-                      placeholder="пиши сюда"
+                      placeholder="your message"
                     />
-                    <button className="nes-btn" type="submit">Отправить</button>
+                    <button className="nes-btn" type="submit">Send</button>
                   </form>
                   <ul>
                     {[...messageHistory].reverse().map((message) => (

@@ -6,7 +6,7 @@ function calcEnemies(state: IInitialState) {
     const flag = Math.floor(Math.random() * arrFlag.length);
     return arrFlag[flag];
   }
-  state.enemies.forEach((enemy) => {
+  state.enemiesArray.forEach((enemy) => {
     function randomNumLoop() {
       const arrr = [70, 110, 150];
       const flag = Math.floor(Math.random() * arrr.length);
