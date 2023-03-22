@@ -15,7 +15,7 @@ function editAvatar({ ifAvatar, name }: IEditAvatar) {
           </>
         )}
       <button className="nes-btn" type="button">
-        выбрать
+        Upload
       </button>
     </div>
   );

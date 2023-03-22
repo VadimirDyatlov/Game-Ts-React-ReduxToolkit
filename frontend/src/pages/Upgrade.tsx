@@ -17,9 +17,11 @@ function Upgrade() {
   const refHp = useRef<HTMLDivElement>(null);
   const refDamage = useRef<HTMLDivElement>(null);
   const refSpeed = useRef<HTMLDivElement>(null);
+  // const refROF = useRef<HTMLDivElement>(null);
   const { user, status } = useAppSelector((state) => state.auth);
   const { hero } = useAppSelector((state) => state.game);
   const {
+    status: statusUpgrade,
     UpgradeHeroValue,
     upSkillsСonstants,
     UpgradeGold,
@@ -62,7 +64,7 @@ function Upgrade() {
   };
   return (
     <>
-      {(status === 'loading' || status === null) ? <Loading />
+      {(status === 'loading' || status === null || statusUpgrade === 'loading') ? <Loading />
         : (
           <>
             {user.name
@@ -76,7 +78,7 @@ function Upgrade() {
                     </div>
                     <ul>
                       <Li
-                        skillName="Здоровь"
+                        skillName="HP"
                         refProp={refHp}
                         skillValue={UpgradeHeroValue.hp}
                         handleClickHpDown={handleClickHpDown}
@@ -84,7 +86,7 @@ function Upgrade() {
                         handleClickHpUp={handleClickHpUp}
                       />
                       <Li
-                        skillName="Урон"
+                        skillName="Damage"
                         refProp={refDamage}
                         skillValue={UpgradeHeroValue.damage}
                         handleClickHpDown={handleClickDamageDown}
@@ -92,15 +94,25 @@ function Upgrade() {
                         handleClickHpUp={handleClickDamageUp}
                       />
                       <Li
-                        skillName="Скорость"
+                        skillName="Speed"
                         refProp={refSpeed}
                         skillValue={UpgradeHeroValue.speed}
                         handleClickHpDown={handleClickSpeedDown}
                         priceValueFunc={() => calcUpgrade('price', upSkillsСonstants, UpgradeHeroValue, 'speed')}
                         handleClickHpUp={handleClickSpeedUp}
                       />
+                       {/* <Li
+                        skillName="Rate of Fire"
+                        refProp={refROF}
+                        skillValue={UpgradeHeroValue.speed}
+                        handleClickHpDown={handleClickSpeedDown}
+                        priceValueFunc={() => calcUpgrade('price', upSkillsСonstants, UpgradeHeroValue, 'speed')}
+                        handleClickHpUp={handleClickSpeedUp}
+                      /> */}
                     </ul>
-                    <button className="nes-btn" type="button" onClick={handleClickSendUpgradeSkills}>УЛУЧШИТЬ</button>
+                    <button className="nes-btn" type="button" onClick={handleClickSendUpgradeSkills}>
+                      Apply
+                    </button>
                   </div>
                   <BackButton />
                 </>

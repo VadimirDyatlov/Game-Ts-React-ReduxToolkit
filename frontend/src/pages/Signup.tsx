@@ -47,7 +47,7 @@ function Signup() {
               className="nes-input"
               type="text"
               name="name"
-              placeholder="name"
+              placeholder="Name"
               required
             />
           </div>
@@ -56,22 +56,21 @@ function Signup() {
               className="nes-input"
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Password"
               required
             />
           </div>
           <div className="nes-field">
             <input
-              name="password2"
-              required
               className="nes-input"
               type="password"
-              placeholder="password confirm"
-              style={{ color: 'black' }}
+              name="password2"
+              placeholder="Password confirm"
+              required
             />
           </div>
-          <button type="submit" className="nes-btn is-primary nes-up">
-            Войти
+          <button type="submit" className="nes-btn">
+            Sign Up
           </button>
           { error !== false && <div className="error-message">{error}</div> }
         </form>

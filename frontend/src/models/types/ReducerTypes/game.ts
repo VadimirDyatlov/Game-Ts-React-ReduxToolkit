@@ -38,6 +38,7 @@ interface IGamePlay {
   droppedGoldType2: number
   droppedGoldType3: number
   droppedGoldType4: number
+  lastShoot: number
 }
 
 export interface IHero {
@@ -52,6 +53,8 @@ export interface IHero {
   speed: number
   move: number
   skin: string
+  rateOfFire: number
+  corner: number
 }
 
 export interface IEnemies {
@@ -68,6 +71,8 @@ export interface IEnemies {
   skin: string
   move: number
   xp: number
+  bloodSkin: string
+  deadSkin: string
 }
 
 export interface IGold {
@@ -91,11 +96,34 @@ export interface IBaullet {
   speedY: number
   damage: number
   corner: number
+  visibility: boolean
 }
 
 interface IDisplay {
   width: number
   height: number
+}
+
+export interface IBlood {
+  id: string
+  x: number
+  y: number
+  w: number
+  h: number
+  skin: string
+  lifetime: number
+  move: number
+}
+
+export interface IDeadBody {
+  id: string
+  x: number
+  y: number
+  w: number
+  h: number
+  skin: string
+  lifetime: number
+  move: number
 }
 
 export interface IInitialState {
@@ -104,15 +132,19 @@ export interface IInitialState {
   gamePlay: IGamePlay
   gameStats: IGameStats
   hero: IHero
-  enemies: IEnemies[]
+  enemiesArray: IEnemies[]
   enemies1: IEnemies
   enemies2: IEnemies
   enemies3: IEnemies
   enemies4: IEnemies
-  golds: IGold[]
+  goldsArray: IGold[]
   gold: IGold
-  bullets: IBaullet[]
+  bulletsArray: IBaullet[]
   bullet: IBaullet
+  bloodArray: IBlood[]
+  blood: IBlood
+  deadBodyArray: IDeadBody[]
+  deadBody: IDeadBody
   gameLoop: number
   display: IDisplay
   backgroundPositionLeft: number

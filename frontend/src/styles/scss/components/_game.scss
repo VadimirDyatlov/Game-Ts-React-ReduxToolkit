@@ -9,24 +9,47 @@
 		display: flex;
 		user-select: none;
 		cursor: url('../../../public/img/251.png'), auto;
+    .hand {
+      position: absolute;
+      background-color: transparent;
+      display: flex;
+      user-select: none;
+      // margin-right: 30px;
+      // background-color: rgba(0, 0, 0, 0.331);
+    }
 		.hero {
-			position: relative;
+			position: absolute;
 			background-color: transparent;
 			display: flex;
 			user-select: none;
+      // background-color: rgba(183, 177, 120, 0.331);
 		}
 		.enemy {
 			position: absolute;
 			background-color: transparent;
 			display: flex;
 			user-select: none;
+      // background-color: rgba(174, 27, 27, 0.331);
 		}
+    .blood {
+			position: absolute;
+			background-color: transparent;
+			display: flex;
+			user-select: none;
+      // background-color: rgba(81, 199, 13, 0.353);
+		}
+    .dead-body {
+      position: absolute;
+			background-color: transparent;
+			display: flex;
+			user-select: none;
+    }
 		.bullet {
-			width: 28px;
-			height: 4px;
-			background-color: rgba(255, 179, 2, 0.863);
+			width: 12px;
+			height: 2px;
+			background-color: rgba(255, 234, 2, 0.735);
 			border-radius: 30%;
-			box-shadow: 0px 0px 5px 5px rgb(181, 25, 25);
+			box-shadow: 0px 0px 5px 5px rgb(203, 159, 16);
 			position: absolute;
 		}
 		.coin {

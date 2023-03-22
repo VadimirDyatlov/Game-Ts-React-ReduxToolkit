@@ -3,12 +3,16 @@ import axios from 'axios';
 import calcHero from './functions/calcHero';
 import calcBullets from './functions/calcBullets';
 import calcEnemies from './functions/calcEnemies';
+import calcBlood from './functions/calcBlood';
 import calcCollisionsEnemie from './functions/calcCollisionsEnemie';
 import calcCollisionBullets from './functions/calcCollisionBullets';
 import upGameLoop from './functions/upGameLoop';
 import calcGoldCoin from './functions/calcCollisionsGold';
 import { IGetHero, IInitialState, ISendGameStats } from '../../models/types/ReducerTypes/game';
 import { urlStore } from '../ApiUrlStore';
+import calcDeadBody from './functions/calcDeadBody';
+import calcHandAngle from './functions/calcHandAngle';
+import factoryEnemies from './functions/factoryEnemies';
 
 export const getHero = createAsyncThunk<IGetHero, void, {rejectValue: string}>(
   'game/getHero',
@@ -50,7 +54,7 @@ const initialState: IInitialState = {
   error: false,
   status: null,
   gamePlay: {
-    waves1: 12, // кол-во мобов
+    waves1: 10, // кол-во мобов
     waves1Count: 0,
     waves2: 14, // кол-во мобов
     waves2Count: 0,
@@ -65,6 +69,7 @@ const initialState: IInitialState = {
     droppedGoldType2: 10,
     droppedGoldType3: 15,
     droppedGoldType4: 100,
+    lastShoot: 0
   },
   gameStats: {
     // объект для сбора статистики за игру
@@ -75,8 +80,8 @@ const initialState: IInitialState = {
   hero: {
     x: 500,
     y: 500,
-    w: 180, // высота
-    h: 180, // ширина
+    w: 180, 
+    h: 180, 
     hp: 1,
     type: 0,
     lvl: 0,
@@ -84,8 +89,10 @@ const initialState: IInitialState = {
     speed: 0,
     move: 1,
     skin: '/animations/hero1.gif',
+    rateOfFire: 3,
+    corner: 0,
   },
-  enemies: [], // массив врагов
+  enemiesArray: [], // массив врагов
   enemies1: {
     id: '',
     type: 1,
@@ -100,6 +107,8 @@ const initialState: IInitialState = {
     skin: '/animations/enemie0move.gif',
     move: 1,
     xp: 26,
+    bloodSkin: '/animations/explosion1.gif',
+    deadSkin: '/animations/enemie0dead.gif',
   },
   enemies2: {
     id: '',
@@ -115,6 +124,8 @@ const initialState: IInitialState = {
     skin: '/animations/enemie1move.gif',
     move: 1,
     xp: 32,
+    bloodSkin: '/animations/explosion1.gif',
+    deadSkin: '/animations/enemie1deeth.gif',
   },
   enemies3: {
     id: '',
@@ -130,6 +141,8 @@ const initialState: IInitialState = {
     skin: '/animations/enemie2move.gif',
     move: 1,
     xp: 48,
+    bloodSkin: '/animations/explosion1.gif',
+    deadSkin: '',
   },
   enemies4: {
     id: '',
@@ -145,8 +158,10 @@ const initialState: IInitialState = {
     skin: '/animations/enemie3move.gif',
     move: 1,
     xp: 300,
+    bloodSkin: '/animations/explosion1.gif',
+    deadSkin: '',
   },
-  golds: [], // массив монет
+  goldsArray: [], // массив монет
   gold: {
     id: '',
     x: 50,
@@ -156,7 +171,7 @@ const initialState: IInitialState = {
     skin: '/animations/gold.gif',
     value: 0,
   },
-  bullets: [], // массив пуль
+  bulletsArray: [], // массив пуль
   bullet: {
     id: '',
     x: 0, // координата хиро по Х
@@ -168,6 +183,29 @@ const initialState: IInitialState = {
     speedY: 0, // скорость пуль по У
     damage: 0, // нанисенный урон
     corner: 0, // угол разворота
+    visibility: true,
+  },
+  bloodArray: [],
+  blood: {
+    id: '',
+    x: 0,
+    y: 0,
+    w: 100,
+    h: 100,
+    skin: '',
+    lifetime: 10,
+    move: 0,
+  },
+  deadBodyArray: [],
+  deadBody: {
+    id: '',
+    x: 0,
+    y: 0,
+    w: 1 * 0.7,
+    h: 1 * 0.7,
+    skin: '',
+    lifetime: 10,
+    move: 0,
   },
   gameLoop: 0, // игровой цик
   display: {
@@ -195,10 +233,10 @@ const gameSlice = createSlice({
       state.gameStats.gameTime = action.payload.gameTime;
     },
     deleteAllGolds(state) {
-      state.golds = [];
+      state.goldsArray = [];
     },
     deleteAllEnemies(state) {
-      state.enemies = [];
+      state.enemiesArray = [];
     },
     // логика движения игрока при смены локации чтобы он проходил в ворота
     updatePositionhero(state) {
@@ -240,10 +278,14 @@ const gameSlice = createSlice({
       upGameLoop(state); // прибовляет 1 каждый цикл;
       calcEnemies(state); // рассчитывает поведение мобов
       calcHero(state, action); // рассчитывает функционал героя, внутри скорость пуль по Х и У
+      calcBlood(state);
+      calcDeadBody(state)
+      factoryEnemies(state, action);
       calcBullets(state); // рассчитыввает длинну полета пули
       calcCollisionsEnemie(state); // рассчит контакт героя и моба
       calcCollisionBullets(state); // рассчитывает контакт моба и пули
       calcGoldCoin(state);
+      calcHandAngle(state, action.payload.mouseCord)
     },
   },
   extraReducers: (builder) => {

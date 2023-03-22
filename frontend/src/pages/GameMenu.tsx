@@ -19,17 +19,17 @@ function GameMenu() {
             <menu className="game-menu">
               { user.name ? (
                 <>
-                  <Li path="/game" text="Начать игру" />
-                  <Li path="/upgrade" text="Улучшить героя" />
-                  <Li path="/settings" text="Настройки профиля" />
-                  <Li path="/chat" text="Войти в чат" />
-                  <Li path="/statistics" text="Рейтинг игроков" />
-                  <Li path="/signin" text="Сменить пользователя" handleClickLogOut={handleClickLogOut} />
+                  <Li path="/game" text="Play" />
+                  <Li path="/upgrade" text="Upgrades" />
+                  <Li path="/settings" text="Settings" />
+                  <Li path="/chat" text="Chat" />
+                  <Li path="/statistics" text="Statistics" />
+                  <Li path="/signin" text="Exit" handleClickLogOut={handleClickLogOut} />
                 </>
               ) : (
                 <>
-                  <Li path="/signin" text="Войти" />
-                  <Li path="/signup" text="Зарегистрироваться" />
+                  <Li path="/signin" text="Sign In" />
+                  <Li path="/signup" text="Sign Up" />
                 </>
               )}
             </menu>

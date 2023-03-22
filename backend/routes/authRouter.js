@@ -20,6 +20,7 @@ function createHero(userId) {
     hp: 100,
     speed: 4,
     damage: 8,
+    // rateOfFire: 7,
   };
 }
 
@@ -38,7 +39,6 @@ authRouter.route('/signup')
       const {
         name, password, password2,
       } = req.body;
-
 
       if (password !== password2) {
         const message = 'Пароль не совпадает!';

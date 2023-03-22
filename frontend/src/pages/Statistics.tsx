@@ -43,11 +43,11 @@ function Statistics() {
                       <thead>
                         <tr>
                           <Th content="№" />
-                          <Th content="Имя" />
-                          <Th content="Игр" />
-                          <Th content="Убийств" />
-                          <Th content="Золото" />
-                          <Th content="Время" />
+                          <Th content="Name" />
+                          <Th content="Games" />
+                          <Th content="Killings" />
+                          <Th content="Gold" />
+                          <Th content="Time" />
                         </tr>
                       </thead>
                     </table>

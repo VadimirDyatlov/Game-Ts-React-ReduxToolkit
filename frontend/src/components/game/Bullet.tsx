@@ -5,9 +5,9 @@ function Bullet({ bullet }: IPropsBullet) {
   return (
     <div
       style={{
-        transform: `translate(${bullet.x.toString()}px, ${bullet.y.toString()}px) 
-          rotate(${bullet.corner.toString()}deg)`,
-        zIndex: '99999',
+        transform: `translate(${bullet.x}px, ${bullet.y}px) 
+          rotate(${bullet.corner}deg)`,
+        zIndex: `${bullet.visibility ? '99999' : '-1'}`,
       }}
       className="bullet"
     />

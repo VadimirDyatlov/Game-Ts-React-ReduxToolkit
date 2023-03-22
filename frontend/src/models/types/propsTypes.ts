@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import React from 'react';
-import { IBaullet, IEnemies, IGold } from './ReducerTypes/game';
+import React, { FormEvent } from 'react';
+import { IBaullet, IEnemies, IGold, IBlood, IDeadBody } from './ReducerTypes/game';
 import { IPlayerStats } from './ReducerTypes/settings';
 import { IPlayersStats } from './ReducerTypes/statistics';
 
@@ -43,7 +43,7 @@ export interface IEditProfile {
   name: string
   error: string | boolean
   formRef: React.RefObject<HTMLFormElement>
-  handleSubmit: any // убрать any
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void
 }
 
 export interface IEditAvatar {
@@ -68,4 +68,12 @@ export interface IPropsLiUp {
   handleClickHpDown: () => void
   priceValueFunc: () => number | 'max' | { [x: string]: number | null | undefined; gold: number | null | undefined; } | null
   handleClickHpUp: () => void
+}
+
+export interface IPropsBlood {
+  blood: IBlood
+}
+
+export interface IPropsDeadBody {
+  deadBody: IDeadBody
 }
