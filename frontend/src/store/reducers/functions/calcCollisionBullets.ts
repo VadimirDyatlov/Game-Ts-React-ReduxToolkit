@@ -19,10 +19,10 @@ function calcCollisionBullets(state: IInitialState) {
         } else {
           enemy.hp = +enemy.hp - +bullet.damage;
           if (enemy.x > state.hero.x) {
-            enemy.x = enemy.x + 10
+            enemy.x = enemy.x + 6
             
           } else {
-            enemy.x = enemy.x - 10
+            enemy.x = enemy.x - 6
           }
         }
 

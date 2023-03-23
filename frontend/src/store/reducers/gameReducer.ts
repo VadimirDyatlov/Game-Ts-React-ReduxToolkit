@@ -152,7 +152,7 @@ const initialState: IInitialState = {
     x: 400, // горизонталь
     y: 50, // вертикаль
     hp: 2000, // здоровье
-    speed: 16,
+    speed: 26,
     damage: 30, // урон
     coolDown: 50, // скорость удара
     skin: '/animations/enemie3move.gif',
